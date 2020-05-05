@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+load File.join(Rails.root, 'db', 'seeds', 'store_seed.rb')
+load File.join(Rails.root, 'db', 'seeds', 'user_seed.rb')
+load File.join(Rails.root, 'db', 'seeds', 'category_seed.rb')
+load File.join(Rails.root, 'db', 'seeds', 'brand_seed.rb')
+load File.join(Rails.root, 'db', 'seeds', 'product_seed.rb')
+load File.join(Rails.root, 'db', 'seeds', 'image_seed.rb')
+load File.join(Rails.root, 'db', 'seeds', 'order_seed.rb')
