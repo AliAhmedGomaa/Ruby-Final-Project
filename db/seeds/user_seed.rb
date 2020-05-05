@@ -4,7 +4,8 @@ User.create(
 	name: 'Admin',
 	email: 'admin@domain.com',
 	password: '123456',
-	avatar: '',
+	password_confirmation: '123456',
+	avatar: 'path/to/image',
 	role: 1
 )
 
@@ -20,7 +21,8 @@ User.create(
 		name: Faker::Name.name,
 		email: Faker::Internet.safe_email,
 		password: '123456',
-		avatar: '',
+		password_confirmation: '123456',
+		avatar: 'path/to/image',
 		role: role,
 		store: store
 	)

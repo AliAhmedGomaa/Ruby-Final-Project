@@ -9,11 +9,11 @@ if Product.count > 0 then
 			5.times do
 				product = Product.order('rand()').first
 
-				order_product = OrderProduct.new
-				order_product.order = order
-				order_product.product = product
-				order_product.quantity = Faker::Number.between(from: 1, to: 100)
-				order_product.save
+				OrderProduct.create(
+					order: order,
+					product: product,
+					quantity: Faker::Number.between(from: 1, to: 100)
+				)
 			end
 		end
 	end

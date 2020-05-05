@@ -3,7 +3,7 @@ puts 'Run images seeder ...'
 Product.all.each do |product|
 	3.times do
 		product.images.create(
-			path: ''
+			path: 'path/to/image'
 		)
 	end
 end
