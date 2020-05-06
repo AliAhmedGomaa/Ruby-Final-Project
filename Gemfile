@@ -28,6 +28,7 @@ require 'faker'
 
 gem 'activeadmin'
 gem 'devise'
+gem 'flattened_active_admin'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
