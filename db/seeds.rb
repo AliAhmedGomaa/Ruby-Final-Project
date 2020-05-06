@@ -13,3 +13,4 @@ load File.join(Rails.root, 'db', 'seeds', 'brand_seed.rb')
 load File.join(Rails.root, 'db', 'seeds', 'product_seed.rb')
 load File.join(Rails.root, 'db', 'seeds', 'image_seed.rb')
 load File.join(Rails.root, 'db', 'seeds', 'order_seed.rb')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
