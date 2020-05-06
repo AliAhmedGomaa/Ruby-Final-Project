@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails', groups: [:development, :test]
 require 'faker'
 
+gem 'activeadmin'
+gem 'devise'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
