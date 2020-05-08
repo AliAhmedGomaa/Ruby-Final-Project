@@ -4,7 +4,7 @@ if Product.count > 0 then
 	User.all.each do |user|
 		5.times do
 			order = user.orders.create(
-				status: Faker::Number.between(from: 1, to: 4)
+				status: Faker::Number.between(from: 0, to: 2)
 			)
 			5.times do
 				product = Product.order('rand()').first

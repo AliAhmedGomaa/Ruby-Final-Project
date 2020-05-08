@@ -11,11 +11,6 @@ if Brand.count > 0 then
 				quantity: Faker::Number.between(from: 1, to: 100),
 				brand: brand
 			)
-
-			if rand() > 0.5 then
-				store = Store.order('rand()').first
-				store.products << product
-			end
 		end
 	end
 end
