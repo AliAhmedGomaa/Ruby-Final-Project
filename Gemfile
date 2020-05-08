@@ -34,6 +34,7 @@ gem 'flattened_active_admin'
 gem 'active_admin_flat_skin'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem 'ransack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
