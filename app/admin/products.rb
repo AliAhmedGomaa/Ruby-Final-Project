@@ -1,7 +1,6 @@
 ActiveAdmin.register Product do
   scope :all, default: true
-  #has_many :images
-  
+
   form   title: 'Add new product' do |f|
       inputs 'Details' do
       input :title
@@ -15,7 +14,8 @@ ActiveAdmin.register Product do
     panel 'Photos' do
    
     f.has_many  :images , :html => { :enctype => "multipart/form-data" }  , allow_destroy: true do |ff|
-      ff.input :image ,required: true , as: :file #,  :hint => f.template.image_tag(f.object.image.url(:medium))
+      ff.input :product_id, as: :hidden
+      ff.input :path , label: "image" , required: true , as: :file 
 
     end
     end
