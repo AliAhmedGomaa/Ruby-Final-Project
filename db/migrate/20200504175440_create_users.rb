@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
 			t.string :password
 			t.string :avatar
 			t.integer :role, :limit => 1
-			t.references :store, null: true, foreign_key: true
 
 			t.timestamps
 		end
