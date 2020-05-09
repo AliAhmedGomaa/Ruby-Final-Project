@@ -88,7 +88,7 @@
                                             <img src="/img/product-default.png" alt="<%= product.title %>">
                                         <% end %>
                                         <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                            <li class="w-icon"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
                                             <li class="quick-view"><a href="#">+ Quick View</a></li>
                                         </ul>
                                     </div>
@@ -117,3 +117,7 @@
     </div>
 </section>
 <!-- Product Shop Section End -->
+
+<% content_for :js do %>
+	<script src="js/cart.addItems.js"></script>
+<% end %>

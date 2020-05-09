@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     end
 
     def cart
+        @products = Product.limit(4)
     end
 
     def checkout
