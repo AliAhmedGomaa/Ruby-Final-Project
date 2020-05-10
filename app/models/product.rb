@@ -14,4 +14,5 @@ class Product < ApplicationRecord
 	scope :filter_by_category, -> (category_id) { where category_id: category_id }
 	scope :filter_by_brand, -> (brand_id) { where brand_id: brand_id }
 	scope :filter_by_price, -> (min, max) { where (["price between ? and ?",min,max]) }
+	paginates_per 12
 end
