@@ -1,10 +1,10 @@
 puts 'Run stores seeder ...'
 
-User.where(role: User.roles['seller']).each do |user|
+AdminUser.where(role: AdminUser.roles['seller']).each do |user|
 	store = Store.create(
 		name: Faker::Company.name,
 		summary: Faker::Lorem.paragraph(sentence_count: 5),
-		user: user
+		admin_user: user
 	)
 
 	5.times do
