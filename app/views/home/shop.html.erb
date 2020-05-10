@@ -1,4 +1,5 @@
 <!-- Breadcrumb Section Begin -->
+
 <div class="breacrumb-section">
     <div class="container">
         <div class="row">
@@ -18,13 +19,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                <form action="/shop" method="get">
+             <div class="filter-widget">
+                    <h4 class="fw-title">Search</h4>
+                     <div class="fw-brand-check">
+                        <input name="search" class="form-control" placeholder="keyword...." type="text" > 
+                    </div>
+                </div>
                 <div class="filter-widget">
                     <h4 class="fw-title">Categories</h4>
-                    <ul class="filter-catagories">
+                     <div class="fw-brand-check">
                         <% @categories.each do |category| %>
-                            <li><a href="#"><%= category.name %></a></li>
+                           <div class="bc-item">
+                                <label for="bc-category-<%= category.id %>">
+                                    <%= category.name %>
+                                    <input name="category[]" value=<%=category.id%> type="checkbox" id="bc-category-<%= category.id %>">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
                         <% end %>
-                    </ul>
+                    </div>
                 </div>
                 <div class="filter-widget">
                     <h4 class="fw-title">Brands</h4>
@@ -33,7 +47,7 @@
                             <div class="bc-item">
                                 <label for="bc-brand-<%= brand.id %>">
                                     <%= brand.name %>
-                                    <input type="checkbox" id="bc-brand-<%= brand.id %>">
+                                    <input name="brand[]" value=<%=brand.id%> type="checkbox" id="bc-brand-<%= brand.id %>">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -55,8 +69,9 @@
                             <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                         </div>
                     </div>
-                    <a href="#" class="filter-btn">Filter</a>
+                    <input type="submit" class="filter-btn" value="filter">
                 </div>
+                </form>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="product-show-option">
