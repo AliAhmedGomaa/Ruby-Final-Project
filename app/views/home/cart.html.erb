@@ -1,0 +1,88 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text product-more">
+                    <a href="./home.html"><i class="fa fa-home"></i> Home</a>
+                    <a href="./shop.html">Shop</a>
+                    <span>Shopping Cart</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th class="p-name">Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th><i class="ti-close"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @products.each_with_index do |product, index| %>
+                                <tr data-id="<%= product.id %>">
+                                    <td class="cart-pic <%= index == 0 ? 'first-row' : '' %>">
+                                        <%if !product.images[0].nil? %>
+                                            <img src="<%= product.images[0].path.url %>" width="170" height="170" alt="<%= product.title %>">
+                                        <% else %>
+                                            <img src="/img/product-default.png" width="170" height="170" alt="<%= product.title %>">
+                                        <% end %>
+                                    </td>
+                                    <td class="cart-title <%= index == 0 ? 'first-row' : '' %>">
+                                        <h5><%= product.title %></h5>
+                                    </td>
+                                    <td class="p-price <%= index == 0 ? 'first-row' : '' %>">$<%= product.price %></td>
+                                    <td class="qua-col <%= index == 0 ? 'first-row' : '' %>">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="total-price <%= index == 0 ? 'first-row' : '' %>">$60.00</td>
+                                    <td class="close-td <%= index == 0 ? 'first-row' : '' %>"><i class="ti-close"></i></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cart-buttons">
+                            <%= link_to "Continue shopping", shop_path, class: "primary-btn continue-shop" %>
+                            <a href="#" class="primary-btn up-cart">Update cart</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 offset-lg-4">
+                        <div class="proceed-checkout">
+                            <ul>
+                                <li class="subtotal">Subtotal <span>$240.00</span></li>
+                                <li class="cart-total">Total <span>$240.00</span></li>
+                            </ul>
+                            <%= link_to "PROCEED TO CHECK OUT", checkout_path, class: "proceed-btn" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+
+<% content_for :js do %>
+	<script src="js/cart.addItems.js"></script>
+	<script src="js/cart.js"></script>
+<% end %>

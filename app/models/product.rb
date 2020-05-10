@@ -10,4 +10,8 @@ class Product < ApplicationRecord
 	validates :price, numericality: { greater_than_or_equal_to: 1 }
 	validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 	validates_associated :category, :brand
+
+	scope :filter_by_category, -> (category_id) { where category_id: category_id }
+	scope :filter_by_brand, -> (brand_id) { where brand_id: brand_id }
+	scope :filter_by_price, -> (min, max) { where (["price between ? and ?",min,max]) }
 end
