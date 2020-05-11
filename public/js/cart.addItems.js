@@ -49,7 +49,7 @@ function getItemQuantity (id) {
 
 function setItemQuantity (id, quantity) {
 	if (id && quantity && id > 0 && quantity > 0) {
-		let cart = localStorage.getItem('cart') || '[{"id":2,"quantity":2}]';
+		let cart = localStorage.getItem('cart') || '[]';
 		cart = JSON.parse(cart);
 
 		let index = cart.findIndex(item => 'id' in item && item.id === id);

@@ -11,11 +11,4 @@ class User < ApplicationRecord
 	validates :name, :email, :password, presence: true
 	validates :email, format: { with: EMAIL_REGEX, message: 'format is not valid' }, uniqueness: true
 	validates :password, confirmation: true
-	
-
-	# enum roles: { admin: 0, seller: 1, buyer: 2 }
-
-	# def get_role
-	# 	User.roles.key(self.role)
-	# end
 end
