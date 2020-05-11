@@ -1,8 +1,19 @@
 ActiveAdmin.register Product do
   scope :all, default: true
+  before_action :check_store
 
+  controller do
+    def check_store
+      if current_admin_user.store.nil?
+        redirect_to admin_dashboard_path
+    end
+  end
+  end
+  before_save do |product|
+    
+    product.store_id = current_admin_user.store.id
+  end
   form   title: 'Add new product' do |f|
-      store=Store.find_by(admin_user: current_user)
       inputs 'Details' do
       input :title
       input :category, label: "Category"
@@ -10,8 +21,6 @@ ActiveAdmin.register Product do
       input :description, label: "Description"
       input :price, label: "Price"
       input :quantity, label: "Quantity"
-      
-    
     end
     panel 'Photos' do
    
@@ -26,7 +35,7 @@ ActiveAdmin.register Product do
     actions
  end
   
-  permit_params :title, :description, :price, :quantity, :category_id, :brand_id ,:store,
+  permit_params :title, :description, :price, :quantity, :category_id, :brand_id , :product_id,
               images_attributes: [:path]
   #
   # or

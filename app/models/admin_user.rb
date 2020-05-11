@@ -4,6 +4,8 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable, :registerable 
   
+  has_one :store
+  
   validates :role, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }
 
   enum roles: { admin: 0, seller: 1 }
@@ -18,7 +20,7 @@ class AdminUser < ApplicationRecord
   end
 
   def self.get_Sellers
-    AdminUser.where(role: AdminUser.roles['seller'])
+    AdminUser.where(role: AdminUser.roles['seller'] ).select {|a| a if a.store.nil?}
   end
   
 end
