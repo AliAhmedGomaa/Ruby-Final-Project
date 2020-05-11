@@ -84,9 +84,15 @@
                     <ul>
                         <li><a href="<%=root_path%>">Home</a></li>
                         <li><a href="<%=shop_path%>">Shop</a></li>
-                        <li><a href="<%=new_user_session_path%>">Login</a></li>
-                        <li><a href="<%=new_user_registration_path%>">Register</a></li>
-                        <li><a href="<%= admin_dashboard_path %>">Admin</a></li>
+                       <% if user_signed_in? %>
+                            <li><a href="<%=order_path%>">Orders</a></li>
+                            <li><%= link_to 'Logout', destroy_user_session_path %></li>
+                        <% end %>
+                        <% if !user_signed_in? %>
+                            <li><a href="<%=new_user_session_path%>">Login</a></li>
+                            <li><a href="<%=new_user_registration_path%>">Register</a></li>
+                            <li><a href="<%= admin_dashboard_path %>">Admin</a></li>
+                        <% end %>
                      
                     </ul>
                 </nav>

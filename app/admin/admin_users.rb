@@ -38,7 +38,7 @@ ActiveAdmin.register AdminUser ,as: "Admins/Sellers"do
         @user.update_attributes(permitted_params[:admin_user])
       end
       if @user.errors.blank?
-        redirect_to admin_admin_users_path, :notice => "User updated successfully."
+        redirect_to admin_admins_seller_path , :notice => "User updated successfully."
       else
         render :edit
       end

@@ -1,4 +1,5 @@
 class OrderController < ApplicationController
+	before_action :authenticate_user!
 	def index
 		@orders = User.find(1).orders
 	end

@@ -14,11 +14,12 @@ class Ability
       # can :read, :all
       can [:read,:destroy] , Product
      elsif user.get_role() == 'seller'
-      can :manage, Product
+      if(user.store)
+        can :manage, Product
+      end
       can [:update,:read], Order
      elsif user.instance_of? User #buyer
       can :read , Product
-      # can :read, ActiveAdmin::Page, :name => "AdminRoot"
      else #guest
       # can :read , Product
     end
