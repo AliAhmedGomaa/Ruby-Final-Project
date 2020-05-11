@@ -1,34 +1,61 @@
-<h2>Sign up</h2>
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="<%=root_path%>"><i class="fa fa-home"></i> Home</a>
+                    <span>Register</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Form Section Begin -->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name , autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="register-form">
+                    <h2>Register</h2>
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                        <div class="group-input">
+                            <label for="user_name">Name *</label>
+                            <input type="text" name="user[name]" id="user_name" autofocus="autofocus" autocomplete="name">
+                        </div>
+                        <div class="group-input">
+                            <label for="user_email">Email address *</label>
+                            <input type="email" name="user[email]" id="user_email" autofocus="autofocus" autocomplete="email">
+                        </div>
+                        <div class="group-input">
+                            <label for="user_password">Password *</label>
+                            <% if @minimum_password_length %>
+                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %>
+                            <input autocomplete="new-password" type="password" name="user[password]" id="user_password">
+                        </div>
+                        <div class="group-input">
+                            <label for="user_password_confirmation">Password confirmation *</label>
+                            <% if @minimum_password_length %>
+                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %>
+                            <input autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+                        </div>
+                        <div class="group-input custom-file">
+                            <input type="file" class="custom-file-input" name="user[avatar]" id="user_avatar" accept="image/*">
+                            <label class="custom-file-label" for="user_avatar">Choose avatar image</label>
+                        </div>
+                        <button type="submit" class="site-btn register-btn">REGISTER</button>
+                    <% end %>
+                    <div class="switch-login">
+                        <a href="<%= new_user_session_path %>" class="or-login">Or Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Form Section End -->
