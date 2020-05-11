@@ -1,26 +1,55 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="<%=root_path%>"><i class="fa fa-home"></i> Home</a>
+                    <span>Login</span>
+                </div>
+            </div>
+        </div>
     </div>
-  <% end %>
+</div>
+<!-- Breadcrumb Form Section Begin -->
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<!-- Login Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                        <div class="group-input">
+                            <label for="user_email">Email address *</label>
+                            <input type="email" name="user[email]" id="user_email" autofocus="autofocus" autocomplete="email">
+                        </div>
+                        <div class="group-input">
+                            <label for="user_password">Password *</label>
+                            <input autocomplete="current-password" type="password" name="user[password]" id="user_password">
+                        </div>
+                        <% if devise_mapping.rememberable? %>
+                            <div class="group-input gi-check">
+                                <div class="gi-more">
+                                    <label for="user_remember_me">
+                                        Remember me
+                                        <input type="hidden" name="user[remember_me]" value="0">
+                                        <input type="checkbox" name="user[remember_me]" value="1" id="user_remember_me">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        <% end %>
+                        <button type="submit" class="site-btn login-btn">Login</button>
+                    <% end %>
+                    <div class="switch-login">
+                        <a href="<%= new_user_registration_path %>" class="or-login">Or Create An Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Form Section End -->

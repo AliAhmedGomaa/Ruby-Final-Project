@@ -38,7 +38,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href=<%=root_path%>>
-                                <img src="img/logo.png" alt="">
+                                <img src="/img/logo.jpeg" style="min-width:250px" alt="">
                             </a>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <ul>
                         <li><a href="<%=root_path%>">Home</a></li>
                         <li><a href="<%=shop_path%>">Shop</a></li>
-                       <% if user_signed_in? %>
+                        <% if user_signed_in? %>
                             <li><a href="<%=order_path%>">Orders</a></li>
                             <li><%= link_to 'Logout', destroy_user_session_path %></li>
                         <% end %>
