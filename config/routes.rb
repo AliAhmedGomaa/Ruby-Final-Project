@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'order', to: 'order#index'
   post 'order', to: 'order#create'
 
-  get 'api/shop' , to: 'api#shop'
+  get 'api/products' , to: 'api#products'
   get 'api/product/:id' , to: 'api#product'
 
   root 'home#index'

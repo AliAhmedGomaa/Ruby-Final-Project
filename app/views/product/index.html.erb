@@ -54,6 +54,20 @@
                         </div>
                     </div>
                     <div class="filter-widget">
+                        <h4 class="fw-title">Seller</h4>
+                        <div class="fw-brand-check">
+                            <% @stores.each do |store| %>
+                                <div class="bc-item">
+                                    <label for="bc-store-<%= store.id %>">
+                                        <%= store.name %>
+                                        <input name="store[]" value=<%=store.id%> type="checkbox" id="bc-store-<%= store.id %>">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="filter-widget">
                         <h4 class="fw-title">Price</h4>
                         <div class="filter-range-wrap">
                             <div class="range-slider">
