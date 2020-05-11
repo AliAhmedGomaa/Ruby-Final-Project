@@ -29,6 +29,10 @@ gem 'faker'
 gem 'activeadmin'
 gem 'devise'
 gem 'flattened_active_admin'
+
+#use cancancan
+gem 'cancancan'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'active_admin_flat_skin'

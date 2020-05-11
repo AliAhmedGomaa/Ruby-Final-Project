@@ -5,8 +5,6 @@ ActiveAdmin.register AdminUser ,as: "Admins/Sellers"do
     selectable_column
     id_column
     column :email
-    # column :current_sign_in_at
-    # column :sign_in_count
     column :created_at
     column "Role" do |user|
        user.role == 1 ? 'Seller' :'Admin'
@@ -49,7 +47,12 @@ ActiveAdmin.register AdminUser ,as: "Admins/Sellers"do
     def user_params
       params[:admin_user].permit(:email,:role,:password)
     end 
+
+    
   end
+
+
+ 
 
  
 
