@@ -1,6 +1,7 @@
 ActiveAdmin.register Product do
-  scope :all, default: true
+  # scope :all, default: true
   before_action :check_store
+  scope_to :current_admin_user , :association_method => :store_products , if: proc{current_admin_user.get_role == 'seller'}
 
   controller do
     def check_store
@@ -37,14 +38,6 @@ ActiveAdmin.register Product do
   
   permit_params :title, :description, :price, :quantity, :category_id, :brand_id , :product_id,
               images_attributes: [:path]
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:title, :description, :price, :quantity, :category_id, :brand_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
   
  end
 

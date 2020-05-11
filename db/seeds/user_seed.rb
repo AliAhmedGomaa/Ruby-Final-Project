@@ -16,7 +16,15 @@ AdminUser.create(
 	)
 end
 
-5.times do
+User.create(
+	name: 'User',
+	email: 'user@domain.com',
+	password: '123456',
+	password_confirmation: '123456',
+	avatar: 'path/to/image'
+)
+
+4.times do
 	User.create(
 		name: Faker::Name.name,
 		email: Faker::Internet.safe_email,
