@@ -3,6 +3,7 @@ class AdminUser < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable, :registerable 
+  has_one :store
   
   validates :role, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 1 }
 
@@ -10,7 +11,6 @@ class AdminUser < ApplicationRecord
 
   def get_role
 		AdminUser.roles.key(self.role)
-  
   end
 
   def is_seller?
@@ -19,6 +19,10 @@ class AdminUser < ApplicationRecord
 
   def self.get_Sellers
     AdminUser.where(role: AdminUser.roles['seller'])
+  end
+
+  def store_products
+    self.store.products
   end
   
 end
