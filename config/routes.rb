@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   get 'shop', to: 'home#shop'
   get 'product', to: 'home#product'
-  get 'checkout', to: 'home#checkout'
   get 'cart', to: 'cart#index'
+  get 'checkout', to: 'checkout#index'
+  get 'order', to: 'order#index'
+  post 'order', to: 'order#create'
   get 'api/shop' , to: 'api#shop'
   get 'api/product/:id' , to: 'api#product'
 
