@@ -2,6 +2,7 @@ ActiveAdmin.register Product do
   scope_to :current_admin_user , :association_method => :store_products , if: proc{current_admin_user.get_role == 'seller'}
 
   form   title: 'Add new product' do |f|
+      store=Store.find_by(admin_user: current_user)
       inputs 'Details' do
       input :title
       input :category, label: "Category"
@@ -9,6 +10,7 @@ ActiveAdmin.register Product do
       input :description, label: "Description"
       input :price, label: "Price"
       input :quantity, label: "Quantity"
+      
     
     end
     panel 'Photos' do
@@ -24,7 +26,7 @@ ActiveAdmin.register Product do
     actions
  end
   
-  permit_params :title, :description, :price, :quantity, :category_id, :brand_id ,
+  permit_params :title, :description, :price, :quantity, :category_id, :brand_id ,:store,
               images_attributes: [:path]
   
  end

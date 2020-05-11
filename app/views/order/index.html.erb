@@ -1,0 +1,60 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                    <span>Order</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Order Section Begin -->
+<section class="checkout-section spad">
+    <div class="container">
+        <div class="checkout-form row">
+            <% @orders.each do |order| %>
+                <div class="col-sm-12">
+                    <div class="row mb-3 mb-lg-5">
+                        <div class="col-lg-6">
+                            <div class="place-order">
+                                <h4>Biiling Details</h4>
+                                <div class="order-total">
+                                    <ul class="order-table mb-0">
+                                        <li class="fw-normal">Address <span><%= order.address %></span></li>
+                                        <li class="fw-normal">Postcode <span><%= order.postcode %></span></li>
+                                        <li class="fw-normal">City <span><%= order.city %></span></li>
+                                        <li class="fw-normal">Phone <span><%= order.phone %></span></li>
+                                        <li class="fw-normal">Status <span><%= order.get_status %></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="place-order">
+                                <h4>Your Order</h4>
+                                <div class="order-total">
+                                    <ul class="order-table mb-0">
+                                        <li>Product <span>Total</span></li>
+                                        <% total = 0 %>
+                                        <% order.order_product.each do |order_product| %>
+                                            <li class="fw-normal"><%= order_product.product.title %> x <%= order_product.quantity %> <span>$<%= order_product.product.price %></span></li>
+                                            <% total += order_product.product.price %>
+                                        <% end %>
+                                        <li class="fw-normal">Subtotal <span>$<%= total.round(2) %></span></li>
+                                        <li class="total-price">Total <span>$<%= total.round(2) %></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
+<!-- Order Section End -->

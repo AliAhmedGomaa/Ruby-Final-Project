@@ -1,0 +1,141 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="<%=root_path%>"><i class="fa fa-home"></i> Home</a>
+                    <span>Shop</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                <form action="/shop" method="get">
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Search</h4>
+                        <div class="fw-brand-check">
+                            <input name="search" class="form-control" placeholder="keyword...." type="text">
+                        </div>
+                    </div>
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Categories</h4>
+                        <div class="fw-brand-check">
+                            <% @categories.each do |category| %>
+                                <div class="bc-item">
+                                    <label for="bc-category-<%= category.id %>">
+                                        <%= category.name %>
+                                        <input name="cat[]" value=<%=category.id%> type="checkbox" id="bc-category-<%= category.id %>">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Brands</h4>
+                        <div class="fw-brand-check">
+                            <% @brands.each do |brand| %>
+                                <div class="bc-item">
+                                    <label for="bc-brand-<%= brand.id %>">
+                                        <%= brand.name %>
+                                        <input name="brand[]" value=<%=brand.id%> type="checkbox" id="bc-brand-<%= brand.id %>">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Seller</h4>
+                        <div class="fw-brand-check">
+                            <% @stores.each do |store| %>
+                                <div class="bc-item">
+                                    <label for="bc-store-<%= store.id %>">
+                                        <%= store.name %>
+                                        <input name="store[]" value=<%=store.id%> type="checkbox" id="bc-store-<%= store.id %>">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="filter-widget">
+                        <h4 class="fw-title">Price</h4>
+                        <div class="filter-range-wrap">
+                            <div class="range-slider">
+                                <div class="price-input">
+                                    <input type="text" name="min_price" id="minamount">
+                                    <input type="text" name="max_price" id="maxamount">
+                                </div>
+                            </div>
+                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="0" data-max="9000">
+                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                            </div>
+                        </div>
+                        <input type="submit" class="filter-btn" value="filter">
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div class="product-show-option">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7">
+                            <div class="select-option"></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 text-right">
+                            <%= page_entries_info @products, entry_name: 'product' %>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-list">
+                    <div class="row">
+                        <% @products.each do |product| %>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <%if !product.images[0].nil? %>
+                                            <img src="<%= product.images[0].path.url %>" alt="<%= product.title %>">
+                                        <% else %>
+                                            <img src="/img/product-default.png" alt="<%= product.title %>">
+                                        <% end %>
+                                        <ul>
+                                            <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
+                                            <li class="quick-view">
+                                                <%= link_to "+ Quick View", controller: 'product', action: 'show', id: product %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="pi-text">
+                                        <div class="catagory-name"><%= product.category.name %></div>
+                                        <a href="#">
+                                            <h5><%= product.title %></h5>
+                                        </a>
+                                        <div class="product-price">
+                                            $<%= product.price %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <%= paginate @products, param_name: :p %>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Shop Section End -->
+
+<% content_for :js do %>
+	<script src="/js/cart.addItems.js"></script>
+<% end %>

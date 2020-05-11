@@ -1,0 +1,119 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text product-more">
+                    <a href="<%=root_path%>"><i class="fa fa-home"></i> Home</a>
+                    <a href="<%=shop_path%>">Shop</a>
+                    <span>Detail</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad page-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="product-pic-zoom">
+                            <%if !@product.images[0].nil? %>
+                                <img class="product-big-img" src="<%= @product.images[0].path.url %>" alt="<%= @product.title %>">
+                            <% else %>
+                                <img class="product-big-img" src="/img/product-default.png" alt="<%= @product.title %>">
+                            <% end %>
+                            <div class="zoom-icon">
+                                <i class="fa fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="product-thumbs">
+                            <div class="product-thumbs-track ps-slider owl-carousel">
+                                <% @product.images.each_with_index do |image, index| %>
+                                    <div class="pt <%= index == 0 ? 'active' : '' %>" data-imgbigurl="<%= image.path.url %>"><img src="<%= image.path.url %>" alt="@product.title"></div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product-details">
+                            <div class="pd-title">
+                                <span><%= @product.category.name %></span>
+                                <h3><%= @product.title %></h3>
+                            </div>
+                            <div class="pd-desc">
+                                <p><%= @product.description %></p>
+                                <h4>$<%= @product.price %></h4>
+                            </div>
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
+                                </div>
+                                <a href="#" class="primary-btn pd-cart add-product-to-cart" data-id="1">Add To Cart</a>
+                            </div>
+                            <div class="pd-desc">
+                                <span>Availability</span>
+                                <h4><%= @product.quantity %> in stock</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Shop Section End -->
+
+<!-- Related Products Section End -->
+<div class="related-products spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Related Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <% @products.each do |product| %>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <%if !product.images[0].nil? %>
+                                <img src="<%= product.images[0].path.url %>" alt="<%= product.title %>">
+                            <% else %>
+                                <img src="/img/product-default.png" alt="<%= product.title %>">
+                            <% end %>
+                            <ul>
+                                <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
+                                <li class="quick-view">
+                                    <%= link_to "+ Quick View", controller: 'product', action: 'show', id: product %>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name"><%= product.category.name %></div>
+                            <a href="#">
+                                <h5><%= product.title %></h5>
+                            </a>
+                            <div class="product-price">
+                                $<%= product.price %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- Related Products Section End -->
+
+<% content_for :js do %>
+	<script src="/js/cart.addItems.js"></script>
+<% end %>
