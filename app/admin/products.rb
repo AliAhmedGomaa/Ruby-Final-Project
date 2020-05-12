@@ -1,11 +1,11 @@
 ActiveAdmin.register Product do
-  # scope :all, default: true
+  
   before_action :check_store
   scope_to :current_admin_user , :association_method => :store_products , if: proc{current_admin_user.get_role == 'seller'}
 
   controller do
     def check_store
-      if current_admin_user.store.nil?
+      if current_admin_user.store.nil? && current_admin_user.role == 1
         redirect_to admin_dashboard_path
     end
   end
@@ -27,8 +27,8 @@ ActiveAdmin.register Product do
    
     f.has_many  :images , :html => { :enctype => "multipart/form-data" }  , allow_destroy: true do |ff|
       ff.input :product_id, as: :hidden
-      ff.input :path , label: "image" , required: true , as: :file 
-
+      ff.input :path , label: "image"  , as: :file ,:hint => image_tag(ff.object.path.url.nil? ? '' : ff.object.path.url() ) 
+  
     end
     end
     
