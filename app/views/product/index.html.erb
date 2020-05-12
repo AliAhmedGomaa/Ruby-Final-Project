@@ -72,7 +72,7 @@
                         <div class="filter-range-wrap">
                             <div class="range-slider">
                                 <div class="price-input">
-                                    <input type="text" name="min_price" id="minamount">
+                                    <input type="text"  name="min_price" id="minamount">
                                     <input type="text" name="max_price" id="maxamount">
                                 </div>
                             </div>
@@ -150,8 +150,12 @@
     let searchInput = document.querySelector('#search-input');
     let cats_input = document.querySelectorAll('input[name="cat[]"]');
     let brands_input = document.querySelectorAll('input[name="brand[]"]');
+    let stores_input = document.querySelectorAll('input[name="store[]"]');
+    let min_input = document.querySelectorAll('input[name="min-price"]');
+    let max_input = document.querySelectorAll('input[name="max-price"]');
     let brands =  urlParams.getAll('brand[]');
     let cats =  urlParams.getAll('cat[]');
+    let stores =  urlParams.getAll('store[]');
     cats_input.forEach(element => {
         if ( cats.includes(element.value ) ) {
             element.setAttribute("checked",true);  
@@ -162,5 +166,12 @@
             element.setAttribute("checked",true);
         }
     });  
+    stores_input.forEach(element => {
+        if (stores.includes(element.value)) {
+            element.setAttribute("checked",true);
+        }
+    });    
     searchInput.value = urlParams.get('search') ? urlParams.get('search') : '';
+
+    
 </script>
