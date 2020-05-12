@@ -18,7 +18,7 @@ $(document).ready(function (e) {
 				const className = index == 0 ? 'first-row' : '';
 				const imagePath = product.images.length > 0 ? product.images[0].path.url : '/img/product-default.png';
 				table.append(`
-					<tr data-id="${product.id}">
+					<tr data-id="${product.id}" data-max-quantity="${product.quantity}">
 						<td class="cart-pic ${className}">
 							<img src="${imagePath}" width="170" height="170" alt="${product.title}">
 						</td>
@@ -59,8 +59,9 @@ $(document).ready(function (e) {
 		$('.cart-table tbody tr').each(function () {
 			const id = +$(this).data('id');
 			const quantity = +$(this).find('.quantity input[type="text"]').val();
+			const maxQuantity = +$(this).data('max-quantity');
 
-			setItemQuantity(id, quantity);
+			setItemQuantity(id, quantity, maxQuantity);
 		});
 	});
 });
