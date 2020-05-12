@@ -22,7 +22,7 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Search</h4>
                         <div class="fw-brand-check">
-                            <input name="search" class="form-control" placeholder="keyword...." type="text">
+                            <input id="search-input" name="search"  class="form-control" placeholder="keyword...." type="text">
                         </div>
                     </div>
                     <div class="filter-widget">
@@ -143,3 +143,24 @@
 <% content_for :js do %>
 	<script src="/js/cart.addItems.js"></script>
 <% end %>
+
+<script >
+    const query =window.location.search
+    const urlParams = new URLSearchParams(query);
+    let searchInput = document.querySelector('#search-input');
+    let cats_input = document.querySelectorAll('input[name="cat[]"]');
+    let brands_input = document.querySelectorAll('input[name="brand[]"]');
+    let brands =  urlParams.getAll('brand[]');
+    let cats =  urlParams.getAll('cat[]');
+    cats_input.forEach(element => {
+        if ( cats.includes(element.value ) ) {
+            element.setAttribute("checked",true);  
+        }
+    });
+    brands_input.forEach(element => {
+        if (brands.includes(element.value)) {
+            element.setAttribute("checked",true);
+        }
+    });  
+    searchInput.value = urlParams.get('search') ? urlParams.get('search') : '';
+</script>
