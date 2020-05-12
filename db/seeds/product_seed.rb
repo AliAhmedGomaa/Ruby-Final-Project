@@ -3,8 +3,8 @@ puts 'Run products seeder ...'
 if Category.count > 0 and Brand.count > 0 then
 	Store.all.each do |store|
 		5.times do
-			category = Category.order('rand()').first
-			brand = Brand.order('rand()').first
+			category = Category.order("RANDOM()").first
+			brand = Brand.order("RANDOM()").first
 			store.products.create(
 				title: Faker::Commerce.product_name,
 				description: Faker::Lorem.paragraph(sentence_count: 5),

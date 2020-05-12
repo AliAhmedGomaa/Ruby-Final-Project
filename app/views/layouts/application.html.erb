@@ -47,7 +47,7 @@
                         <ul class="nav-right">
                             <% if user_signed_in? %>
                                  <span><%= current_user.name%></span>
-                                 <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" width="30px">
+                                 <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" width="45px">
                             <%end%>
                             <li class="cart-icon" style="font-size:1.5rem;">
                                 <a href="<%=cart_path%>" class="text-warning">
