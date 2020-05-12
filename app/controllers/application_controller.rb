@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     def get_cat
         @categories=Category.all()
     end
-    def after_sign_in_path_for(resource)
-        '/' 
-      end
+    # def after_sign_in_path_for(resource)
+    #     '/' 
+    #   end
 end

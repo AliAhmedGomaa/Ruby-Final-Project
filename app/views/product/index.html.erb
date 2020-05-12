@@ -110,7 +110,7 @@
                                         <% end %>
                                         <ul>
                                             <% if user_signed_in? %>
-                                                 <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
+                                                 <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1" data-max-quantity="<%= product.quantity %>"><i class="icon_bag_alt"></i></a></li>
                                             <% else %>    
                                                  <li class="w-icon active"><a  href="/users/sign_in"> <i class="icon_bag_alt"></i></a></li>
                                             <% end %>

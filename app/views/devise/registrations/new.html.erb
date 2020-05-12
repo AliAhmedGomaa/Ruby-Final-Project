@@ -44,9 +44,10 @@
                             <% end %>
                             <input autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation">
                         </div>
-                        <div class="group-input custom-file">
-                            <input type="file" class="custom-file-input" name="user[avatar]" id="user_avatar" accept="image/*">
-                            <label class="custom-file-label" for="user_avatar">Choose avatar image</label>
+                        <div class="custom-file">
+                            <%= f.label :avatar  do %> 
+                            <%= f.file_field :avatar   %><%= f.hidden_field :avatar_cache %>
+                            <% end %>
                         </div>
                         <button type="submit" class="site-btn register-btn">REGISTER</button>
                     <% end %>

@@ -45,7 +45,10 @@
                    
                     <div class="col-lg-3 text-right col-md-3 offset-7">
                         <ul class="nav-right">
-                           
+                            <% if user_signed_in? %>
+                                 <span><%= current_user.name%></span>
+                                 <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" width="30px">
+                            <%end%>
                             <li class="cart-icon" style="font-size:1.5rem;">
                                 <a href="<%=cart_path%>" class="text-warning">
                                     <i class="icon_bag_alt"></i>
@@ -84,16 +87,16 @@
                     <ul>
                         <li><a href="<%=root_path%>">Home</a></li>
                         <li><a href="<%=shop_path%>">Shop</a></li>
-                        <% if user_signed_in? %>
+                        <%if user_signed_in? %>
                             <li><a href="<%=order_path%>">Orders</a></li>
                             <li><%= link_to 'Logout', destroy_user_session_path %></li>
-                        <% end %>
-                        <% if !user_signed_in? %>
-                            <li><a href="<%=new_user_session_path%>">Login</a></li>
-                            <li><a href="<%=new_user_registration_path%>">Register</a></li>
+                        <% elsif  admin_user_signed_in? %>
                             <li><a href="<%= admin_dashboard_path %>">Admin</a></li>
-                        <% end %>
-                     
+                        <%else%>
+                             <li><a href="<%=new_user_session_path%>">Login</a></li>
+                             <li><a href="<%=new_user_registration_path%>">Register</a></li>
+                             <li><a href="<%= admin_dashboard_path %>">Admin</a></li>
+                        <%end%>
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap"></div>
