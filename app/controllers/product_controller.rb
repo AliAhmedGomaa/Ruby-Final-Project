@@ -27,6 +27,6 @@ class ProductController < ApplicationController
 	def products
 		ids = params[:ids]
 
-		render :json => { products: Product.find(ids).as_json(:only => [:id, :title, :price], :include => [:images => { :only => [:id, :path] }]) }
+		render :json => { products: Product.find(ids).as_json(:only => [:id, :title, :price, :quantity], :include => [:images => { :only => [:id, :path] }]) }
 	end
 end

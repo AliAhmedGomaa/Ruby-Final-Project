@@ -4,8 +4,9 @@ $(document).ready(function (e) {
 
 		const id = +$(this).data('id');
 		const quantity = +$(this).data('quantity');
+		const maxQuantity = +$(this).data('max-quantity');
 		
-		addToCart(id, quantity);
+		addToCart(id, quantity, maxQuantity);
 	});
 
 	$('.add-product-to-cart').on('click', function (e) {
@@ -16,17 +17,18 @@ $(document).ready(function (e) {
 		if (quantityInput) {
 			const id = +$(this).data('id');
 			const quantity = +quantityInput.val();
+			const maxQuantity = +$(this).data('max-quantity');
 
-			addToCart(id, quantity);
+			addToCart(id, quantity, maxQuantity);
 		}
 	});
 });
 
-function addToCart (id, quantity) {
-	if (id && quantity && id > 0 && quantity > 0) {
+function addToCart (id, quantity, maxQuantity) {
+	if (id && quantity && maxQuantity && id > 0 && quantity > 0 && maxQuantity > 0) {
 		let itemQuantity = getItemQuantity(id);
 
-		setItemQuantity(id, quantity + itemQuantity);
+		setItemQuantity(id, quantity + itemQuantity, maxQuantity);
 	}
 }
 
@@ -47,24 +49,26 @@ function getItemQuantity (id) {
 	return 0;
 }
 
-function setItemQuantity (id, quantity) {
-	if (id && quantity && id > 0 && quantity > 0) {
-		let cart = localStorage.getItem('cart') || '[]';
-		cart = JSON.parse(cart);
+function setItemQuantity (id, quantity, maxQuantity) {
+	if (id && quantity && maxQuantity && id > 0 && quantity > 0 && maxQuantity > 0) {
+		if (maxQuantity >= quantity) {
+			let cart = localStorage.getItem('cart') || '[]';
+			cart = JSON.parse(cart);
 
-		let index = cart.findIndex(item => 'id' in item && item.id === id);
+			let index = cart.findIndex(item => 'id' in item && item.id === id);
 
-		if (index === -1) {
-			cart.push({
-				id: id,
-				quantity: quantity
-			});
+			if (index === -1) {
+				cart.push({
+					id: id,
+					quantity: quantity
+				});
+			}
+			else
+				cart[index].quantity = quantity;
+
+			cart.sort((a, b) => a.id - b.id);
+
+			localStorage.setItem('cart', JSON.stringify(cart));
 		}
-		else
-			cart[index].quantity = quantity;
-
-		cart.sort((a, b) => a.id - b.id);
-
-		localStorage.setItem('cart', JSON.stringify(cart));
 	}
 }
