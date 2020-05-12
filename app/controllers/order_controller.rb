@@ -1,6 +1,7 @@
 class OrderController < ApplicationController
+	before_action :authenticate_user!
 	def index
-		@orders = User.find(1).orders
+		@orders = current_user.orders
 	end
 
 	def create
@@ -13,7 +14,7 @@ class OrderController < ApplicationController
 		elsif !check_quantity(products, cart) then
 			redirect_to({ :controller => :checkout, :action => :index }, alert: 'Quantity is not available')
 		else
-			order = User.find(1).orders.create(
+			order = current_user.orders.create(
 				address: data['address'],
 				postcode: data['postcode'],
 				city: data['city'],

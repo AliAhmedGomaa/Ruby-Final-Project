@@ -149,8 +149,13 @@ ActiveAdmin.setup do |config|
   #
   # You can add before, after and around filters to all of your
   # Active Admin resources and pages from here.
-  #
-  # config.before_action :do_something_awesome
+  #redirect buyer if he try to access dashboard
+  config.before_action :check_user
+  def check_user
+    if(current_user.instance_of? User )
+      redirect_to '/'
+    end
+  end
 
   # == Attribute Filters
   #

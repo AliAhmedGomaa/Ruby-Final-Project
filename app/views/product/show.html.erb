@@ -56,7 +56,11 @@
                                 <div class="pro-qty">
                                     <input type="text" value="1">
                                 </div>
-                                <a href="#" class="primary-btn pd-cart add-product-to-cart" data-id="1">Add To Cart</a>
+                                 <% if user_signed_in? %>
+                                    <a href="#" class="primary-btn pd-cart add-product-to-cart" data-id="1">Add To Cart</a>
+                                <% else %>    
+                                    <a href="/users/sign_in" class="primary-btn pd-cart " >Add To Cart</a>
+                                 <% end %>
                             </div>
                             <div class="pd-desc">
                                 <span>Availability</span>
@@ -92,7 +96,11 @@
                                 <img src="/img/product-default.png" alt="<%= product.title %>">
                             <% end %>
                             <ul>
-                                <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
+                              <% if user_signed_in? %>
+                                    <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
+                                <% else %>    
+                                    <li class="w-icon active"><a  href="/users/sign_in"> <i class="icon_bag_alt"></i></a></li>
+                                 <% end %>
                                 <li class="quick-view">
                                     <%= link_to "+ Quick View", controller: 'product', action: 'show', id: product %>
                                 </li>
