@@ -45,10 +45,12 @@
                    
                     <div class="col-lg-3 text-right col-md-3 offset-7">
                         <ul class="nav-right">
+                            <li>
                             <% if user_signed_in? %>
-                                 <span><%= current_user.name%></span>
-                                 <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" width="45px">
+                                <img class="mr-3" src="<%= ( current_user.avatar.nil? || current_user.avatar.to_s.end_with?('path/to/image')) ? "/img/product-default.png" : current_user.avatar  %>" alt="<%= current_user.name %>" width="50px">
+                                <span><%= current_user.name%></span>
                             <%end%>
+                            </li>
                             <li class="cart-icon" style="font-size:1.5rem;">
                                 <a href="<%=cart_path%>" class="text-warning">
                                     <i class="icon_bag_alt"></i>
