@@ -57,7 +57,7 @@
                                     <input type="text" value="1">
                                 </div>
                                  <% if user_signed_in? %>
-                                    <a href="#" class="primary-btn pd-cart add-product-to-cart" data-id="1">Add To Cart</a>
+                                    <a href="#" class="primary-btn pd-cart add-product-to-cart" data-id="1" data-max-quantity="<%= @product.quantity %>">Add To Cart</a>
                                 <% else %>    
                                     <a href="/users/sign_in" class="primary-btn pd-cart " >Add To Cart</a>
                                  <% end %>
@@ -96,9 +96,9 @@
                                 <img src="/img/product-default.png" alt="<%= product.title %>">
                             <% end %>
                             <ul>
-                              <% if user_signed_in? %>
-                                    <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1"><i class="icon_bag_alt"></i></a></li>
-                                <% else %>    
+                                <% if user_signed_in? %>
+                                    <li class="w-icon active"><a class="add-to-cart" href="#" data-id="<%= product.id %>" data-quantity="1" data-max-quantity="<%= product.quantity %>"><i class="icon_bag_alt"></i></a></li>
+                                <% else %>
                                     <li class="w-icon active"><a  href="/users/sign_in"> <i class="icon_bag_alt"></i></a></li>
                                  <% end %>
                                 <li class="quick-view">
@@ -107,7 +107,7 @@
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="catagory-name"><%= product.category.name %></div>
+                            <div class="catagory-name"><%= product.store.name %></div>
                             <a href="#">
                                 <h5><%= product.title %></h5>
                             </a>
