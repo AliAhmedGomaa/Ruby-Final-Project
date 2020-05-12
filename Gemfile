@@ -33,6 +33,10 @@ gem 'flattened_active_admin'
 #use cancancan
 gem 'cancancan'
 
+gem 'pg'
+gem 'activerecord-postgresql-adapter', '~> 0.0.1'
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'active_admin_flat_skin'
