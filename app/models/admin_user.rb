@@ -17,7 +17,7 @@ class AdminUser < ApplicationRecord
   end
 
   def self.get_Sellers
-    AdminUser.where(role: AdminUser.roles['seller'])
+    AdminUser.where(role: AdminUser.roles['seller'] ).select {|a| a if a.store.nil?}
   end
 
   def store_products

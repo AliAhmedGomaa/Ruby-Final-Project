@@ -1,8 +1,20 @@
 ActiveAdmin.register Product do
+  
+  before_action :check_store
   scope_to :current_admin_user , :association_method => :store_products , if: proc{current_admin_user.get_role == 'seller'}
 
+  controller do
+    def check_store
+      if current_admin_user.store.nil? && current_admin_user.role == 1
+        redirect_to admin_dashboard_path
+    end
+  end
+  end
+  before_save do |product|
+    
+    product.store_id = current_admin_user.store.id
+  end
   form   title: 'Add new product' do |f|
-      store=Store.find_by(admin_user: current_user)
       inputs 'Details' do
       input :title
       input :category, label: "Category"
@@ -10,15 +22,13 @@ ActiveAdmin.register Product do
       input :description, label: "Description"
       input :price, label: "Price"
       input :quantity, label: "Quantity"
-      
-    
     end
     panel 'Photos' do
    
     f.has_many  :images , :html => { :enctype => "multipart/form-data" }  , allow_destroy: true do |ff|
       ff.input :product_id, as: :hidden
-      ff.input :path , label: "image" , required: true , as: :file 
-
+      ff.input :path , label: "image"  , as: :file ,:hint => image_tag(ff.object.path.url.nil? ? '' : ff.object.path.url() ) 
+  
     end
     end
     
@@ -26,7 +36,7 @@ ActiveAdmin.register Product do
     actions
  end
   
-  permit_params :title, :description, :price, :quantity, :category_id, :brand_id ,:store,
+  permit_params :title, :description, :price, :quantity, :category_id, :brand_id , :product_id,
               images_attributes: [:path]
   
  end
