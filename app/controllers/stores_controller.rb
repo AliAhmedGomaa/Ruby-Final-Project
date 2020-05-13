@@ -14,18 +14,18 @@ class StoresController < ApplicationController
         
     end
 
-    # def destroy
-    #     @product = Product.find(params[:id])
-    #     if !OrderProduct.exists?(:product_id => params[:id] ) 
-    #          @product.destroy
-    #          redirect_to stores_path
-    #     else
-    #         respond_to do |format|
-    #             format.html {redirect_to stores_path, alert: 'Cant delete there is an order containing this product'}
-    #         end
+    def destroy
+        @product = Product.find(params[:id])
+        if !OrderProduct.exists?(:product_id => params[:id] ) 
+             @product.destroy
+             redirect_to stores_path
+        else
+            respond_to do |format|
+                format.html {redirect_to stores_path, alert: 'Cant delete there is an order containing this product'}
+            end
 
-    #     end
-    # end
+        end
+    end
        
 
     def show
@@ -94,22 +94,22 @@ class StoresController < ApplicationController
     # end  
 
 
-    # private
+    private
 
-    #     def product_params
-    #       params.require(:product).permit(:title, :brand_id, :price, :category_id, :quantity, :description, image_attributes: [:path])
-    #     end    
+        def product_params
+          params.require(:product).permit(:title, :brand_id, :price, :category_id, :quantity, :description, image_attributes: [:path])
+        end    
 
-    #     def user_store
-    #         if admin_user_signed_in? && current_admin_user.role == 'seller'
-    #             @currentUser =  current_admin_user.id
-    #             @store = Store.select(:id).where(admin_user_id: @currentUser)
-    #             return @store
-    #         else
-    #               redirect_to root_path
-    #               returns
-    #         end
+        def user_store
+            if admin_user_signed_in? && current_admin_user.role == 'seller'
+                @currentUser =  current_admin_user.id
+                @store = Store.select(:id).where(admin_user_id: @currentUser)
+                return @store
+            else
+                  redirect_to root_path
+                  returns
+            end
            
-    #     end    
+        end    
 
 end
