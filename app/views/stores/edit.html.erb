@@ -23,41 +23,40 @@
         </ul>
         </div>
          <% end %>
-                        <h2>Add Product</h2>
+                       <h2>Edit Product</h2>
                         <div class="form-group form-input">
-                            <%= form.text_field :title, name:"name", id:"name"  %>
+                            <%= form.text_field :title%>
                             <label for="name" class="form-label">Title</label>
                         </div>
                         <div class="form-group form-input">
-                              <%= form.text_field :price, name:"phone", id:"phone" %>
+                              <%= form.text_field :price %>
                             <label for="phone" class="form-label">Price</label>
                         </div>
                          <div class="form-group form-input">
-                              <%= form.text_field :quantity, name:"phone", id:"phone" %>
+                              <%= form.text_field :quantity%>
                             <label for="phone" class="form-label">Quantity</label>
                         </div>
-                                                                                         <label>Brand</label>
-
+                        <label>Brand</label>
                          <div class="form-group form-input">
-                                    <%= form.collection_select :brand_id, Brand.all, :id, :name %>
+                        <%= form.collection_select :brand_id, Brand.all, :id, :name %>
     
                         </div>
-                                                                               <label>Category</label>
+                          <label>Category</label>
 
                          <div class="form-group form-input">
                                    <%= form.collection_select :category_id, Category.all, :id, :name %>
 
                         </div>
-                                                         <label>Description</label>
+                            <label>Description</label>
 
                           <div class="form-group form-input">
-                            <%= form.text_area :description, name:"name", id:"name"%>
+                            <%= form.text_area :description%>
 
                         </div>
                                 <label>Image</label>
 
                           <div class="form-group form-input">
-                                <%= form.file_field :path, multiple: true, name:"image[path][]", name:"name", id:"name" %>
+                                <%= form.file_field :path, multiple: true, name:"image[path][]" %>
                         </div>
                        
 
@@ -69,6 +68,4 @@
         </div>
 
     </div>
-
-
     <% end %>
