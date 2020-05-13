@@ -1,8 +1,8 @@
 class StoresController < ApplicationController
-    # def new
-    #     @product = Product.new
-    #     @image = @product.images.build
-    # end
+    def new
+        @product = Product.new
+        @image = @product.images.build
+    end
 
     # def edit
     #     @product = Product.find(params[:id])
@@ -32,21 +32,21 @@ class StoresController < ApplicationController
     #     @product = Product.find(params[:id])
     # end
 
-    # def create
-    #     @product = Product.new(product_params)
-    #     @product.brand =Brand.find(@product.brand_id)
-    #     @product.category = Category.find(@product.category_id)
-    #     @product.store = Store.where(id: user_store).take
+    def create
+        @product = Product.new(product_params)
+        @product.brand =Brand.find(@product.brand_id)
+        @product.category = Category.find(@product.category_id)
+        @product.store = Store.where(id: user_store).take
 
-    #     if @product.save
-    #         params[:image]['path'].each do |a|
-    #         @image = @product.images.create!(:path => a, :product_id => @product.id)
-    #         end
-    #       redirect_to store_path(@product)
-    #     else
-    #         render 'new'
-    #     end
-    # end
+        if @product.save
+            params[:image]['path'].each do |a|
+            @image = @product.images.create!(:path => a, :product_id => @product.id)
+            end
+          redirect_to store_path(@product)
+        else
+            render 'new'
+        end
+    end
 
        
     # def update
