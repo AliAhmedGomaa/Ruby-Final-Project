@@ -42,10 +42,15 @@
                 </div>
             </div>
         </div>
+        <div align="center">
+        <%= link_to 'Destroy', store_path(@product.id),method: :delete,class:"btn btn-warning",data: { confirm: 'Are you sure?' }%>
+        <%= link_to 'Edit', edit_store_path(@product), class:"btn btn-warning"%>
+        <%= link_to 'Back', stores_path, class:"btn btn-warning" %>
+        </div>
     </div>
+    
+
+
 </section>
 
-<%= link_to 'Destroy', store_path(@product.id),method: :delete,data: { confirm: 'Are you sure?' }%>
-
-<%= link_to 'Back', stores_path %>
 

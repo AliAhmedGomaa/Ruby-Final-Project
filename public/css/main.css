@@ -20,8 +20,6 @@
 	margin: 0px; 
 	padding: 0px; 
   box-sizing: border-box;
-      COLOR: #ffc107
-
 }
 
 body, html {
@@ -606,7 +604,6 @@ h2 {
 
   .active:after {
     position: absolute;
-    content: 'Person';
     right: 17px;
     top: 50%;
     transform: translateY(-50%);
@@ -637,9 +634,9 @@ form {
   -webkit-transition: 0.25s ease;
   -o-transition: 0.25s ease;
   -ms-transition: 0.25s ease;
-  color: #bebebe;
+  color: #ffc107;
   left: 0;
-  top: 23px; }
+  top: 0px; }
 
 input {
   transition: 0.3s ease;

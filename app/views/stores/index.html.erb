@@ -39,9 +39,9 @@
 									<td class="cell100 column2"><%= product.category.name %></td>
 									<td class="cell100 column3"><%= product.brand.name %></td>
 									<td class="cell100 column4"><%= product.price %></td>
-									<td class="cell100 column4"><%= link_to 'Show', store_path(product), class:"btn btn-light"%></td>
-                 	<td class="cell100 column5"><%= link_to 'Edit', edit_store_path(product), class:"btn btn-light"%></td>
-                  <td class="cell100 column5"><%= link_to 'Delete', store_path(product),method: :delete,data: { confirm: 'Are you sure?' }, class:"btn btn-light"%></td>
+									<td class="cell100 column4"><%= link_to 'Show', store_path(product), class:"btn btn-warning"%></td>
+                 	<td class="cell100 column5"><%= link_to 'Edit', edit_store_path(product), class:"btn btn-warning"%></td>
+                  <td class="cell100 column5"><%= link_to 'Delete', store_path(product),method: :delete,data: { confirm: 'Are you sure?' }, class:"btn btn-warning"%></td>
                   </td>
 								</tr>
                 <% end %>

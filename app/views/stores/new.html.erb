@@ -37,27 +37,28 @@
                               <%= form.text_field :quantity%>
                             <label for="phone" class="form-label">Quantity</label>
                         </div>
-                        <label>Brand</label>
                          <div class="form-group form-input">
                         <%= form.collection_select :brand_id, Brand.all, :id, :name %>
+                         <label class="form-label">Brand</label>
     
                         </div>
-                          <label>Category</label>
 
                          <div class="form-group form-input">
-                                   <%= form.collection_select :category_id, Category.all, :id, :name %>
+                        <%= form.collection_select :category_id, Category.all, :id, :name %>
+                          <label class="form-label">Category</label>
 
                         </div>
-                                                         <label>Description</label>
 
                           <div class="form-group form-input">
                             <%= form.text_area :description%>
+                                <label class="form-label">Description</label>
 
                         </div>
-                                <label>Image</label>
 
                           <div class="form-group form-input">
                                 <%= form.file_field :path, multiple: true, name:"image[path][]" %>
+                                  <label class="form-label">Image</label>
+
                         </div>
                        
 
