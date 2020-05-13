@@ -70,28 +70,28 @@ class StoresController < ApplicationController
         render 'orders'
     end  
     
-    # def changeStatus
-    #   @order_product = OrderProduct.find(params[:id])
-    #   if(@order_product.product_status == 0) 
-    #      @order_product.product_status = 1
-    #   else
-    #      @order_product.product_status = 2
-    #   end
-    #   @order_product.save
+    def changeStatus
+      @order_product = OrderProduct.find(params[:id])
+      if(@order_product.product_status == 0) 
+         @order_product.product_status = 1
+      else
+         @order_product.product_status = 2
+      end
+      @order_product.save
 
-    #   @order_products = OrderProduct.where(order_id: @order_product.order_id)
-    #   @order = Order.where(id: @order_product.order_id).take
-    #   if @order_products.all? { |item| item.product_status == 1}
-    #         @order.status = 1
-    #         @order.save
+      @order_products = OrderProduct.where(order_id: @order_product.order_id)
+      @order = Order.where(id: @order_product.order_id).take
+      if @order_products.all? { |item| item.product_status == 1}
+            @order.status = 1
+            @order.save
 
-    #   elsif @order_products.all? { |item| item.product_status == 2}
-    #         @order.status = 2
-    #         @order.save
-    #   end      
-    #   redirect_to({ :controller => :stores, :action => :orders })
+      elsif @order_products.all? { |item| item.product_status == 2}
+            @order.status = 2
+            @order.save
+      end      
+      redirect_to({ :controller => :stores, :action => :orders })
 
-    # end  
+    end  
 
 
     private
