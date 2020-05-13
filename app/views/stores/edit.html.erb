@@ -1,0 +1,74 @@
+<%= render 'stores/layouts/header' %>
+   <div class="main">
+
+        <div class="XYZ">
+            <div class="booking-content">
+               <div class="booking-image">
+                    <img class="booking-img" src="/img/form6.jpg" alt="Booking Image">
+                </div>
+                <div class="booking-form">
+
+   
+    <%= form_with model: @product, url: store_path(@product.id), id:"booking-form", local: true do |form| %>
+           <% if @product.errors.any? %>
+        <div id="error_explanation">
+        <h2>
+            <%= pluralize(@product.errors.count, "error") %> prohibited
+            this product from being saved:
+        </h2>
+        <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+         <% end %>
+                        <h2>Add Product</h2>
+                        <div class="form-group form-input">
+                            <%= form.text_field :title, name:"name", id:"name"  %>
+                            <label for="name" class="form-label">Title</label>
+                        </div>
+                        <div class="form-group form-input">
+                              <%= form.text_field :price, name:"phone", id:"phone" %>
+                            <label for="phone" class="form-label">Price</label>
+                        </div>
+                         <div class="form-group form-input">
+                              <%= form.text_field :quantity, name:"phone", id:"phone" %>
+                            <label for="phone" class="form-label">Quantity</label>
+                        </div>
+                                                                                         <label>Brand</label>
+
+                         <div class="form-group form-input">
+                                    <%= form.collection_select :brand_id, Brand.all, :id, :name %>
+    
+                        </div>
+                                                                               <label>Category</label>
+
+                         <div class="form-group form-input">
+                                   <%= form.collection_select :category_id, Category.all, :id, :name %>
+
+                        </div>
+                                                         <label>Description</label>
+
+                          <div class="form-group form-input">
+                            <%= form.text_area :description, name:"name", id:"name"%>
+
+                        </div>
+                                <label>Image</label>
+
+                          <div class="form-group form-input">
+                                <%= form.file_field :path, multiple: true, name:"image[path][]", name:"name", id:"name" %>
+                        </div>
+                       
+
+                        <div class="form-submit">
+                            <%= form.submit %>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <% end %>

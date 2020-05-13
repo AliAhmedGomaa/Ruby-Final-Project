@@ -4,9 +4,9 @@ class StoresController < ApplicationController
         @image = @product.images.build
     end
 
-    # def edit
-    #     @product = Product.find(params[:id])
-    # end
+    def edit
+        @product = Product.find(params[:id])
+    end
 
     def index
             @store=user_store
@@ -49,18 +49,18 @@ class StoresController < ApplicationController
     end
 
        
-    # def update
-    #     @product = Product.find(params[:id])
+    def update
+        @product = Product.find(params[:id])
     
-    #     if @product.update(product_params)
-    #         params[:image]['path'].each do |a|
-    #             @image = @product.images.update(:path => a, :product_id => @product.id)
-    #         end
-    #         redirect_to store_path(@product)
-    #     else
-    #        render 'edit'
-    #     end
-    # end
+        if @product.update(product_params)
+            params[:image]['path'].each do |a|
+                @image = @product.images.update(:path => a, :product_id => @product.id)
+            end
+            redirect_to store_path(@product)
+        else
+           render 'edit'
+        end
+    end
 
     # def orders
 
