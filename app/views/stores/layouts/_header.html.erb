@@ -1,4 +1,4 @@
-           <%if admin_user_signed_in? && current_admin_user.get_role == 'seller' %>
+           <%if admin_user_signed_in? and current_admin_user.role == 1 %>
                    <br><br><br><br>
                     <div class="nav-item">
                             <div class="container">
@@ -15,5 +15,6 @@
                             </div>
                         </div>               
             <% else %>
-                <%=redirect_to  root_path %>
+                   
+                <%= render template: "home/index" %>
             <%end%>
