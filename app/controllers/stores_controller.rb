@@ -39,9 +39,11 @@ class StoresController < ApplicationController
         @product.store = Store.where(id: user_store).take
 
         if @product.save
-            params[:image]['path'].each do |a|
-            @image = @product.images.create!(:path => a, :product_id => @product.id)
+            if !params[:image].nil?
+                params[:image]['path'].each do |a|
+                @image = @product.images.create!(:path => a, :product_id => @product.id)
             end
+        end
           redirect_to store_path(@product)
         else
             render 'new'
@@ -53,9 +55,11 @@ class StoresController < ApplicationController
         @product = Product.find(params[:id])
     
         if @product.update(product_params)
-            params[:image]['path'].each do |a|
+            if !params[:image].nil?
+                params[:image]['path'].each do |a|
                 @image = @product.images.update(:path => a, :product_id => @product.id)
             end
+        end
             redirect_to store_path(@product)
         else
            render 'edit'
@@ -81,12 +85,12 @@ class StoresController < ApplicationController
 
       @order_products = OrderProduct.where(order_id: @order_product.order_id)
       @order = Order.where(id: @order_product.order_id).take
-      if @order_products.all? { |item| item.product_status == 1}
-            @order.status = 1
-            @order.save
+      if @order_products.all? { |item| item.product_status == 2}
+         @order.status = 2
+         @order.save
 
-      elsif @order_products.all? { |item| item.product_status == 2}
-            @order.status = 2
+      elsif @order_products.all? { |item| item.product_status >= 1}
+            @order.status = 1
             @order.save
       end      
       redirect_to({ :controller => :stores, :action => :orders })
@@ -101,13 +105,11 @@ class StoresController < ApplicationController
         end    
 
         def user_store
-            if admin_user_signed_in? && current_admin_user.role == 'seller'
-                @currentUser =  current_admin_user.id
-                @store = Store.select(:id).where(admin_user_id: @currentUser)
-                return @store
+            if admin_user_signed_in?
+                    @currentUser =  current_admin_user.id
+                    @store = Store.select(:id).where(admin_user_id: @currentUser)
             else
-                  redirect_to root_path
-                  returns
+                redirect_to({ :controller => :home, :action => :index })
             end
            
         end    
