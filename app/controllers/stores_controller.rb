@@ -62,13 +62,13 @@ class StoresController < ApplicationController
         end
     end
 
-    # def orders
+    def orders
 
-    #     @store=user_store
-    #     @products = Product.where(store: @store)
-    #     @order_products = OrderProduct.where(product_id: @products)
-    #     render 'orders'
-    # end  
+        @store=user_store
+        @products = Product.where(store: @store)
+        @order_products = OrderProduct.where(product_id: @products)
+        render 'orders'
+    end  
     
     # def changeStatus
     #   @order_product = OrderProduct.find(params[:id])

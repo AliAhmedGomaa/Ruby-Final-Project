@@ -1,0 +1,44 @@
+<%= render 'stores/layouts/header' %>
+<div class="col-xs-1" align="center">
+<br><br><br>
+
+<div class="wrap-table100">
+  <div class="table100 ver3 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">p_title</th>
+									<th class="cell100 column2">quantity</th>
+									<th class="cell100 column3">status</th>
+                                    <th class="cell100 column4">change Status</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+						<table >
+							<tbody>
+               <% @order_products.each do |product| %>
+								<tr class="row100 body">
+									<td class="cell100 column1"><%= product.product.title %></td>
+									<td class="cell100 column2"><%= product.quantity %></td>
+									<td class="cell100 column3"><%= product.get_status %></td>
+                                    <% if product.product_status == 0%>
+									     
+									    <td class="cell100 column4"><a href="changeStatus?id=<%= product.id %>" class="btn btn-light">Approve</a></td>
+                                    <% elsif product.product_status == 1%>
+                                	    <td class="cell100 column4"><a href="changeStatus?id=<%= product.id %>" class="btn btn-light">Deliver</a></td>
+									<% elsif product.product_status == 2%>
+									     <td class="cell100 column4">Cant Change</td>
+
+                                    <% end %>
+								</tr>
+                <% end %>
+              </tbody>
+            </table>  
+          </div>
+  </div>
+</div>
+<br><br><br>
