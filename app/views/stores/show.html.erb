@@ -1,0 +1,51 @@
+<%= render 'stores/layouts/header' %>
+
+
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad page-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-6">
+                          <div class="product-pic-zoom">
+                            <%if !@product.images[0].nil? %>
+                                <img class="product-big-img" src="<%= @product.images[0].path.url %>" alt="<%= @product.title %>">
+                            <% else %>
+                                <img class="product-big-img" src="/img/product-default.png" alt="<%= @product.title %>">
+                            <% end %>
+                            <div class="zoom-icon">
+                                <i class="fa fa-search-plus"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="product-details">
+                            <div class="pd-title">
+                                <h5><%= @product.category.name %></h5>
+                                <h3><%= @product.title %></h3>
+                            </div>
+                            <div class="pd-desc">
+                                <p><%= @product.description %></p>
+                                <h4>$<%= @product.price %></h4>
+                            </div>
+                        
+                            <div class="pd-desc">
+                                <span>Availability</span>
+                                <h4><%= @product.quantity %> in stock</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= link_to 'Destroy', store_path(@product.id),method: :delete,data: { confirm: 'Are you sure?' }%>
+
+<%= link_to 'Back', stores_path %>
+
