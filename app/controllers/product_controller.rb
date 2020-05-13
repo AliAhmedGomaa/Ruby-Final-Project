@@ -21,7 +21,7 @@ class ProductController < ApplicationController
 		@brands = Brand.all()
 		@categories = Category.all()
 		@product = Product.find(params[:id])
-		@products = @product.category.products.order('rand()').limit(4)
+		@products = @product.category.products.order('RANDOM()').limit(4)
 	end
 
 	def products
