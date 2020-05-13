@@ -337,4 +337,10 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   # config.use_webpacker = true
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: "Home", url: "/", priority: 0
+      menu.add label: "Log out", url: :destroy_admin_user_session_path , priority: 50
+    end
+  end
 end

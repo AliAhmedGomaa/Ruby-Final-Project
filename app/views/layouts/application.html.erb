@@ -48,10 +48,12 @@
                    
                     <div class="col-lg-3 text-right col-md-3 offset-7">
                         <ul class="nav-right">
+                            <li>
                             <% if user_signed_in? %>
-                                 <span><%= current_user.name%></span>
-                                 <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" width="30px">
+                                <img class="mr-3" src="<%= ( current_user.avatar.nil? || current_user.avatar.to_s.end_with?('path/to/image')) ? "/img/product-default.png" : current_user.avatar  %>" alt="<%= current_user.name %>" width="50px">
+                                <span><%= current_user.name%></span>
                             <%end%>
+                            </li>
                             <li class="cart-icon" style="font-size:1.5rem;">
                                 <a href="<%=cart_path%>" class="text-warning">
                                     <i class="icon_bag_alt"></i>
@@ -102,11 +104,25 @@
                               <%end%>
 
                         <%else%>
+                            <li><a href="<%= admin_dashboard_path %>">Admin</a></li>
                              <li><a href="<%=new_user_session_path%>">Login</a></li>
-                             <li><a href="<%=new_user_registration_path%>">Register</a></li>
-                             <li><a href="<%= admin_dashboard_path %>">Admin</a></li>
+                             <!-- <li><a href="<%=new_user_registration_path%>">Register</a></li> -->
                         <%end%>
+                    
                     </ul>
+                    <% if !user_signed_in? && !admin_user_signed_in? %>
+                    <div class="dropdown register-menu nav-menu">
+                        <li ><a class="btn  btn-outline-dark text-white dropdown-toggle register-btn " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            Register
+                          </a> <div class="dropdown-menu bg-dark text-warning" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item text-warning" href="<%= new_admin_user_registration_path %>">Admin / Seller</a>
+                            <a class="dropdown-item text-warning" href="<%= new_user_registration_path %>">Buyer</a>
+ 
+                          </div></li>
+                      </div>
+                      <% end %>
+                    
+                    
                 </nav>
                 <div id="mobile-menu-wrap"></div>
             </div>
@@ -185,6 +201,7 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
