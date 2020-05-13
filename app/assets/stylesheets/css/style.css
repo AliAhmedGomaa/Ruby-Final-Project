@@ -108,6 +108,7 @@ ol {
 	margin: 0;
 }
 
+
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -757,8 +758,7 @@ ol {
 .nav-item .nav-menu li a {
 	font-size: 14px;
 	font-weight: 700;
-	display: block;
-	color: #ffffff;
+	color: #f00000;
 	border-right: 2px solid #3b3b3b;
 	text-transform: uppercase;
 	padding: 16px 42px 15px;
@@ -3745,7 +3745,7 @@ ol {
 
 .faq-accordin .card-heading a[aria-expanded=true]:after,
 .faq-accordin .card-heading>a.active:after {
-	content: "";
+	content: "";
 	font-family: "FontAwesome";
 	float: left;
 	font-size: 13px;
@@ -3798,7 +3798,7 @@ ol {
 .login-form form .login-btn {
 	width: 100%;
 	letter-spacing: 2px;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .register-form .switch-login,

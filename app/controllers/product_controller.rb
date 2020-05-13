@@ -21,12 +21,13 @@ class ProductController < ApplicationController
 		@brands = Brand.all()
 		@categories = Category.all()
 		@product = Product.find(params[:id])
-		@products = @product.category.products.order('RANDOM()').limit(4)
+		@products = @product.category.products.order('rand()').limit(4)
 	end
 
 	def products
 		ids = params[:ids]
 
 		render :json => { products: Product.find(ids).as_json(:only => [:id, :title, :price, :quantity], :include => [:images => { :only => [:id, :path] }]) }
+	
 	end
 end

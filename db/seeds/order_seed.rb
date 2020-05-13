@@ -11,7 +11,7 @@ if Product.count > 0 then
 				status: Faker::Number.between(from: 0, to: 2)
 			)
 			5.times do
-				product = Product.order('RANDOM()').first
+				product = Product.order('rand()').first
 
 				OrderProduct.create(
 					order: order,
