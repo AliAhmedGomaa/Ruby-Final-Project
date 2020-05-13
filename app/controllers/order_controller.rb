@@ -29,6 +29,7 @@ class OrderController < ApplicationController
 					OrderProduct.create(
 						order: order,
 						product: product,
+						product_status: 0,
 						quantity: cart[index]['quantity']
 					)
 					product.update(
