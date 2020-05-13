@@ -1,0 +1,53 @@
+<%= render 'stores/layouts/header' %>
+
+<div class="col-xs-1" align="center">
+<br><br><br>
+
+<div class="wrap-table100">
+<% if flash.alert %>
+            <div class="alert alert-warning alert-dismissible fade show mb-4" role="alert">
+                <%= flash.alert %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+<% end %>
+  <div class="table100 ver3 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">Title</th>
+									<th class="cell100 column2">Category</th>
+									<th class="cell100 column3">Brand</th>
+									<th class="cell100 column4">Price</th>
+                  <th class="cell100 column4">Show</th>
+                  <th class="cell100 column5">Edit</th>
+                  <th class="cell100 column5">Delete</th>
+
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+						<table >
+							<tbody>
+                <% @products.each do |product| %>
+								<tr class="row100 body">
+                  <td class="cell100 column1"><%= product.title %></td>
+									<td class="cell100 column2"><%= product.category.name %></td>
+									<td class="cell100 column3"><%= product.brand.name %></td>
+									<td class="cell100 column4"><%= product.price %></td>
+									<td class="cell100 column4"><%= link_to 'Show', store_path(product), class:"btn btn-light"%></td>
+                 	<td class="cell100 column5"><%= link_to 'Edit', edit_store_path(product), class:"btn btn-light"%></td>
+                  <td class="cell100 column5"><%= link_to 'Delete', store_path(product),method: :delete,data: { confirm: 'Are you sure?' }, class:"btn btn-light"%></td>
+                  </td>
+								</tr>
+                <% end %>
+              </tbody>
+            </table>  
+          </div>
+  </div>
+</div>
+<br><br><br>
