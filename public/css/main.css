@@ -101,7 +101,6 @@ iframe {
 }
 
 .table100 .ps__rail-y::before {
-  content: "";
   display: block;
   position: absolute;
   background-color: #ebebeb;
@@ -120,7 +119,6 @@ iframe {
 }
 
 .table100 .ps__rail-y .ps__thumb-y::before {
-  content: "";
   display: block;
   position: absolute;
   background-color: #cccccc;

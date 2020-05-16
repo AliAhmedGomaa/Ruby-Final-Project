@@ -146,7 +146,6 @@
 		width: 80px;
 		height: 3px;
 		background: #e7ab3c;
-		content: "";
 		margin: 0 auto;
 	}
 
@@ -451,7 +450,6 @@
 		width: 1px;
 		height: 20px;
 		background: #e5e5e5;
-		content: "";
 	}
 
 	.inner-header .advanced-search .category-btn:after {
@@ -881,7 +879,6 @@
 		width: calc(100% - 10px);
 		height: calc(100% - 10px);
 		border: 2px dashed #ffffff;
-		content: "";
 		border-radius: 50%;
 		z-index: -1;
 	}
@@ -985,7 +982,7 @@
 		left: 35px;
 		top: 30px;
 		border: 13px solid #ffffff;
-		content: "";
+		
 		opacity: 0.3;
 		width: calc(100% - 70px);
 		height: calc(100% - 60px);
@@ -1067,7 +1064,6 @@
 		width: 100%;
 		height: 2px;
 		background: #ffffff;
-		content: "";
 	}
 
 	.filter-control {
@@ -1101,7 +1097,6 @@
 		width: 100%;
 		height: 2px;
 		background: #171717;
-		content: "";
 		opacity: 0;
 	}
 
@@ -1353,7 +1348,6 @@
 		width: 100%;
 		height: 100%;
 		background: rgba(0, 0, 0, 0.3);
-		content: "";
 		opacity: 0;
 		-webkit-transition: all 0.3s;
 		-webkit-transition: 0.3s;
@@ -1552,7 +1546,6 @@
 		height: 100%;
 		width: 100%;
 		background: #e7ab3c;
-		content: "";
 		border-radius: 50%;
 		opacity: 0;
 		-webkit-transition: all 0.3s;
@@ -1800,7 +1793,6 @@
 		height: 1px;
 		width: 17px;
 		background: #ebebeb;
-		content: "";
 	}
 
 	.filter-widget .filter-range-wrap .range-slider .price-input input {
@@ -1904,7 +1896,6 @@
 		width: 18px;
 		background: #252525;
 		border-radius: 50%;
-		content: "";
 	}
 
 	.filter-widget .fw-size-choose .sc-item {
@@ -1952,7 +1943,6 @@
 
 	.checkmark:after {
 		position: absolute;
-		content: "";
 	}
 
 	.product-show-option {
@@ -2052,7 +2042,6 @@
 		width: 100%;
 		height: 2px;
 		background: #e7ab3c;
-		content: "";
 	}
 
 	/*---------------------
@@ -2097,7 +2086,6 @@
 
 	.product-thumbs .pt.active:after {
 		position: absolute;
-		content: "";
 		width: 100%;
 		height: 100%;
 		left: 0;
@@ -2400,7 +2388,6 @@
 		width: 100%;
 		height: 5px;
 		background: #e7ab3c;
-		content: "";
 		opacity: 0;
 	}
 
@@ -3278,7 +3265,6 @@
 		height: 1px;
 		width: 125px;
 		background: #ebebeb;
-		content: "";
 	}
 
 	.blog-details-inner .blog-detail-title p:after {
@@ -3288,7 +3274,6 @@
 		height: 1px;
 		width: 125px;
 		background: #ebebeb;
-		content: "";
 	}
 
 	.blog-details-inner .blog-detail-title p span {
@@ -3349,7 +3334,6 @@
 		height: 88px;
 		width: 3px;
 		background: #e7ab3c;
-		content: "";
 	}
 
 	.blog-details-inner .blog-more {
@@ -3745,7 +3729,6 @@
 
 	.faq-accordin .card-heading a[aria-expanded=true]:after,
 	.faq-accordin .card-heading>a.active:after {
-		content: "";
 		font-family: "FontAwesome";
 		float: left;
 		font-size: 13px;
@@ -3824,7 +3807,6 @@
 		height: 2px;
 		width: 100%;
 		background: #9f9f9f;
-		content: "";
 	}
 
 	.login-form .group-input.gi-check {
